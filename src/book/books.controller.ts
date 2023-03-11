@@ -7,7 +7,7 @@ export class BooksController {
 
     @Post()
     createBook(){
-        return this.booksService.createBook()
+        return this.booksService.addBook()
     }
 
     @Get()
