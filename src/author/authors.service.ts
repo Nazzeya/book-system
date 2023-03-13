@@ -8,10 +8,11 @@ export class AuthorsService {
 
     async addAuthor(dto: AuthorDto){
         const author = await this.prisma.author.create({
-            data:{
+            data: {
                 firstName: dto.firstName,
-                lastName: dto.lastName
-            } 
+                lastName: dto.lastName,
+                nickname: dto.nickname
+            }
         })
     }
 }

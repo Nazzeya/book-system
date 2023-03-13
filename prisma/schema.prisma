@@ -14,8 +14,9 @@ model Author {
   id Int @id @default(autoincrement())
   createdAt DateTime @default(now())
 
-  firstName String
-  lastName String
+  firstName String?
+  lastName String?
+  nickname String
 
   books Book[]
 }
@@ -28,6 +29,6 @@ model Book {
   title String
   description String
 
-  author    Author?    @relation(fields: [authorId], references: [id])
   authorId  Int
+  author    Author?    @relation(fields: [authorId], references: [id])
 }
