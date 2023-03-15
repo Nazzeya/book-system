@@ -15,4 +15,30 @@ export class AuthorsService {
             }
         })
     }
+
+    async getAll() {
+        const authors = await this.prisma.author.findMany({
+            select: {
+            id: true,
+            nickname: true,
+            books: true
+            }
+        });
+        return authors;
+    }
+
+    async getAuthor(authorId: number) {
+        const author = await this.prisma.author.findUnique({
+            where: {
+                id: authorId,
+            },
+            select: {
+                nickname: true
+            }
+        })
+
+        return author;
+    }
+
+    
 }
