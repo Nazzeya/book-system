@@ -15,7 +15,7 @@ export class BooksService {
             }
         })
 
-        return book;
+        return this.prisma.book.findMany();
     }
 
     async getBooks(){
