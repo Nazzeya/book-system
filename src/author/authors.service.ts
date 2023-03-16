@@ -58,10 +58,12 @@ export class AuthorsService {
     }
 
     async deleteAuthor(authorId: number) {
-        const author = await this.prisma.author.delete({
+        await this.prisma.author.delete({
             where: {
                 id: authorId
             }
         })
+
+        return this.prisma.author.findMany()
     }
 }
