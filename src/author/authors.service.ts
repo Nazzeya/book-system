@@ -14,6 +14,8 @@ export class AuthorsService {
                 nickname: dto.nickname
             }
         })
+
+        return author;
     }
 
     async getAll() {
@@ -40,5 +42,26 @@ export class AuthorsService {
         return author;
     }
 
-    
+    async editAuthor(authorId: number, dto: AuthorDto) {
+        const author = await this.prisma.author.update({
+            where: {
+                id: authorId
+            },
+            data: {
+                firstName: dto.firstName,
+                lastName: dto.lastName,
+                nickname: dto.nickname
+            }
+        })
+
+        return author;
+    }
+
+    async deleteAuthor(authorId: number) {
+        const author = await this.prisma.author.delete({
+            where: {
+                id: authorId
+            }
+        })
+    }
 }
